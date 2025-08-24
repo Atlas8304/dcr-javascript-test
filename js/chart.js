@@ -61,12 +61,15 @@ function getCategoryTooltip(data, category) {
     switch(category) {
         case "country":
             return "Population: " + data.population
+                + "<br>" + "Number of borders: " + data.borders.length
+                + "<br>" + "Number of timezones: " + data.timezones.length
+                + "<br>" + "Number of languages: " + data.languages.length
                 + "<br>" + "Region: " + data.region
-                + "<br>" + "Number of borders: " + data.borders.length;
+                + "<br>" + "Subregion: " + data.subregion;
         case "region":
             return "Number of countries: " + data.countries
-                + "<br>" + "Total population: " + data.population
-                + "<br>" + "Number of unique timezones: " + data.timezones.length;
+                + "<br>" + "Number of unique timezones: " + data.timezones.length
+                + "<br>" + "Total population: " + data.population;
     }
 }
 
