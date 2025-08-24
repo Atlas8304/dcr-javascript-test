@@ -57,8 +57,20 @@ function getOptionValue(data, option) {
     }
 }
 
+function getCategoryTooltip(data, category) {
+    switch(category) {
+        case "country":
+            return "Population: " + data.population
+                + "<br>" + "Region: " + data.region
+                + "<br>" + "Number of borders: " + data.borders.length;
+        case "region":
+            return "Number of countries: " + data.countries
+                + "<br>" + "Total population: " + data.population
+                + "<br>" + "Number of unique timezones: " + data.timezones.length;
+    }
+}
 
-function displayBubbleChart(data, option) {
+function displayBubbleChart(data, category, option) {
     const width = 800
     const height = 800
 
@@ -99,7 +111,7 @@ function displayBubbleChart(data, option) {
     }
     const mousemove = function(event, d) {
         Tooltip
-            .html('<u>' + d.name + '</u>' + "<br>" + getOptionValue(d, option))
+            .html('<u>' + d.name + '</u>' + "<br>" + getCategoryTooltip(d, category))
             .style("left", (event.x/2+20) + "px")
             .style("top", (event.y/2-30) + "px")
     }
@@ -212,7 +224,7 @@ function displayDataCharts(category, option) {
             data = summarizeByRegion(data);
         }
 
-        displayBubbleChart(data, option)
+        displayBubbleChart(data, category, option)
         displayTable(data, option)
     });
 }
