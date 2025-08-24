@@ -1,62 +1,64 @@
 $(document).ready(function(){
     $('input[type=radio]').click(function(){
-        alert(this.value);
-        displayDataCharts(this.value);
+        displayDataCharts(this.name, this.value);
     });
 });
 
-function countByRegion(data) {
-    const counts = data.reduce((acc, country) => {
-        const region = country.region || "Unknown";
-        acc[region] = (acc[region] || 0) + 1;
-        return acc;
+function summarizeByRegion(data) {
+  const result = data.reduce((acc, country) => {
+    const region = country.region || "Unknown";
+
+    if (!acc[region]) {
+        acc[region] = {
+        name: region,
+        countries: 0,            // number of countries
+        population: 0,       // total population
+        timezones: new Set() // unique timezones
+        };
+    }
+
+    // Increment country count
+    acc[region].countries += 1;
+
+    // Add population
+    if (country.population) {
+        acc[region].population += country.population;
+    }
+
+    // Add timezones
+    (country.timezones || []).forEach(tz => acc[region].timezones.add(tz));
+
+    return acc;
     }, {});
 
-    return Object.entries(counts).map(([name, value]) => ({
-        name,
-        value
+
+    return Object.values(result).map(region => ({
+        name: region.name,
+        countries: region.countries,
+        population: region.population,
+        timezones: [...region.timezones]
     }));
 }
 
-function countUniqueTimezonesByRegion(data) {
-    const tzByRegion = data.reduce((acc, country) => {
-        const region = country.region || "Unknown";
-
-        if (!acc[region]) {
-            acc[region] = new Set();
-        }
-
-        (country.timezones || []).forEach(tz => acc[region].add(tz));
-
-        return acc;
-    }, {});
-
-
-    return Object.entries(tzByRegion).map(([name, tzSet]) => ({
-        name,
-        value: tzSet.size
-    }));
-}
-
-
-function getOptionData(option, data) {
+function getOptionValue(data, option) {
     switch(option) {
         case "1":
-            return data.map(d => ({name: d.name, value: d.population}));
+            return data.population;
         case "2":
-            return data.map(d => ({name: d.name, value: d.borders.length}));
+            return data.borders.length;
         case "3":
-            return data.map(d => ({name: d.name, value: d.timezones.length}));
+            return data.timezones.length;
         case "4":
-            return data.map(d => ({name: d.name, value: d.languages.length}));
+            return data.languages.length;
         case "5":
-            return countByRegion(data);
+            return data.countries;
         case "6":
-            return countUniqueTimezonesByRegion(data);
+            return data.timezones.length;
     }
 }
 
-function displayBubbleChart(data) {
+
+function displayBubbleChart(data, option) {
     const width = 800
     const height = 800
 
@@ -65,11 +67,17 @@ function displayBubbleChart(data) {
         .attr("width", width)
         .attr("height", height)
 
-    const min = parsedData.reduce((a, b) => (a.value < b.value ? a : b)).value;
-    const max = parsedData.reduce((a, b) => (a.value > b.value ? a : b)).value;
+    const minData = data.reduce(
+        (a, b) => {
+            return getOptionValue(a, option) < getOptionValue(b, option) ? a : b
+        });
+    const maxData = data.reduce(
+        (a, b) => {
+            return getOptionValue(a, option) > getOptionValue(b, option) ? a : b;
+        });
 
-    console.log(min);
-    console.log(max);
+    const min = getOptionValue(minData, option)
+    const max = getOptionValue(maxData, option)
 
     const size = d3.scaleLinear()
         .domain([min, max])
@@ -91,7 +99,7 @@ function displayBubbleChart(data) {
     }
     const mousemove = function(event, d) {
         Tooltip
-            .html('<u>' + d.name + '</u>' + "<br>" + d.value)
+            .html('<u>' + d.name + '</u>' + "<br>" + getOptionValue(d, option))
             .style("left", (event.x/2+20) + "px")
             .style("top", (event.y/2-30) + "px")
     }
@@ -102,10 +110,10 @@ function displayBubbleChart(data) {
 
     var node = svg.append("g")
         .selectAll("circle")
-        .data(parsedData)
+        .data(data)
         .join("circle")
             .attr("class", "node")
-            .attr("r", d => size(d.value))
+            .attr("r", d => size(getOptionValue(d, option)))
             .attr("cx", width / 2)
             .attr("cy", height / 2)
             .style("fill", "black")
@@ -119,10 +127,10 @@ function displayBubbleChart(data) {
     const simulation = d3.forceSimulation()
         .force("center", d3.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area
         .force("charge", d3.forceManyBody().strength(.1)) // Nodes are attracted one each other of value is > 0
-        .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (size(d.value)+3) }).iterations(1)) // Force that avoids circle overlapping
+        .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (size(getOptionValue(d, option))+3) }).iterations(1)) // Force that avoids circle overlapping
 
     simulation
-        .nodes(parsedData)
+        .nodes(data)
         .on("tick", function(d){
             node
                 .attr("cx", d => d.x)
@@ -130,13 +138,22 @@ function displayBubbleChart(data) {
         });
 }
 
-function displayTable(data) {
+function displayTable(data, option) {
     var margin = {top: 10, right: 30, bottom: 90, left: 40},
         width = 2000 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
         
-    const min = parsedData.reduce((a, b) => (a.value < b.value ? a : b)).value;
-    const max = parsedData.reduce((a, b) => (a.value > b.value ? a : b)).value;
+    const minData = data.reduce(
+        (a, b) => {
+            return getOptionValue(a, option) < getOptionValue(b, option) ? a : b
+        });
+    const maxData = data.reduce(
+        (a, b) => {
+            return getOptionValue(a, option) > getOptionValue(b, option) ? a : b;
+        });
+
+    const min = getOptionValue(minData, option)
+    const max = getOptionValue(maxData, option)
 
 
     var svg = d3.select("#data_table")
@@ -172,7 +189,7 @@ function displayTable(data) {
         .append("line")
             .attr("x1", function(d) { return x(d.name); })
             .attr("x2", function(d) { return x(d.name); })
-            .attr("y1", function(d) { return y(d.value); })
+            .attr("y1", function(d) { return y(getOptionValue(d, option)); })
             .attr("y2", y(0))
             .attr("stroke", "grey")
 
@@ -181,20 +198,21 @@ function displayTable(data) {
         .enter()
         .append("circle")
             .attr("cx", function(d) { return x(d.name); })
-            .attr("cy", function(d) { return y(d.value); })
+            .attr("cy", function(d) { return y(getOptionValue(d, option)); })
             .attr("r", "4")
             .style("fill", "#69b3a2")
             .attr("stroke", "black")
 }
 
-function displayDataCharts(option) {
+function displayDataCharts(category, option) {
     $("#bubble_chart").html("");
     $("#data_table").html("");
     d3.json("/data/countries.json").then(function(data) {
-        parsedData = getOptionData(option, data);
+        if (category == "region") {
+            data = summarizeByRegion(data);
+        }
 
-        displayBubbleChart(parsedData)
-        displayTable(parsedData)
-        
+        displayBubbleChart(data, option)
+        displayTable(data, option)
     });
 }
