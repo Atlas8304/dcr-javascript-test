@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <link rel="stylesheet" href="./css/chart.css">
+    </style>
+</head>
+<body>
+    <script src="./js/chart.js"></script>  
+
+    <fieldset>
+    <legend>Select an option:</legend>
+    <label>By country:</label>
+    <div>
+        <input type="radio" id="pop-size" name="country" value="1" />
+        <label for="pop-size">Population size</label>
+    </div>
+    <div>
+        <input type="radio" id="borders" name="country" value="2" />
+        <label for="borders">Number of Borders</label>
+    </div>
+    <div>
+        <input type="radio" id="timezones" name="country" value="3" />
+        <label for="timezones">Number of timezones</label>
+    </div>
+    <div>
+        <input type="radio" id="languages" name="country" value="4" />
+        <label for="languages">Number of languages</label>
+    </div>
+
+    <label>By region:</label>
+    <div>
+        <input type="radio" id="countries-in-region" name="region" value="5" />
+        <label for="countries-in-region">Number of countries in the region</label>
+    </div>
+    <div>
+        <input type="radio" id="timezones-in-region" name="region" value="6" />
+        <label for="timezones-in-region">Number of unique timezones in the region</label>
+    </div>
+    </fieldset>
+
+    <div id="bubble_chart"></div>
+     
+</body>
+</html>
