@@ -1,0 +1,402 @@
+[
+  {
+    "name": "<b>BoldName</b>",
+    "topLevelDomain": [
+      ".af"
+    ],
+    "alpha2Code": "T1",
+    "alpha3Code": "TST",
+    "callingCodes": [
+      "000"
+    ],
+    "capital": "Sampleville",
+    "altSpellings": [
+      "Injection Test"
+    ],
+    "region": "Test Fixtures",
+    "subregion": "Injection",
+    "population": 0,
+    "latlng": [
+      33.0,
+      65.0
+    ],
+    "demonym": "Tester",
+    "area": 652230.0,
+    "gini": 27.8,
+    "timezones": [
+      "UTC"
+    ],
+    "borders": [],
+    "nativeName": "افغانستان",
+    "numericCode": "990",
+    "currencies": [
+      {
+        "code": "TST",
+        "name": "Test Currency",
+        "symbol": "¤"
+      }
+    ],
+    "languages": [
+      {
+        "iso639_1": "ps",
+        "iso639_2": "pus",
+        "name": "Pashto",
+        "nativeName": "پښتو"
+      },
+      {
+        "iso639_1": "uz",
+        "iso639_2": "uzb",
+        "name": "Uzbek",
+        "nativeName": "Oʻzbek"
+      },
+      {
+        "iso639_1": "tk",
+        "iso639_2": "tuk",
+        "name": "Turkmen",
+        "nativeName": "Türkmen"
+      }
+    ],
+    "translations": {
+      "de": "Afghanistan",
+      "es": "Afganistán",
+      "fr": "Afghanistan",
+      "ja": "アフガニスタン",
+      "it": "Afghanistan",
+      "br": "Afeganistão",
+      "pt": "Afeganistão",
+      "nl": "Afghanistan",
+      "hr": "Afganistan",
+      "fa": "افغانستان"
+    },
+    "flag": "https://restcountries.eu/data/afg.svg",
+    "regionalBlocs": [
+      {
+        "acronym": "SAARC",
+        "name": "South Asian Association for Regional Cooperation",
+        "otherAcronyms": [],
+        "otherNames": []
+      }
+    ],
+    "cioc": ""
+  },
+  {
+    "name": "<img src=x onerror=\"alert('IMG_TEST')\">",
+    "topLevelDomain": [
+      ".af"
+    ],
+    "alpha2Code": "T2",
+    "alpha3Code": "TS2",
+    "callingCodes": [
+      "000"
+    ],
+    "capital": "AttrTest",
+    "altSpellings": [
+      "Injection Test"
+    ],
+    "region": "Test Fixtures",
+    "subregion": "Injection",
+    "population": 0,
+    "latlng": [
+      33.0,
+      65.0
+    ],
+    "demonym": "Tester",
+    "area": 652230.0,
+    "gini": 27.8,
+    "timezones": [
+      "UTC"
+    ],
+    "borders": [],
+    "nativeName": "افغانستان",
+    "numericCode": "991",
+    "currencies": [
+      {
+        "code": "TST",
+        "name": "Test Currency",
+        "symbol": "¤"
+      }
+    ],
+    "languages": [
+      {
+        "iso639_1": "ps",
+        "iso639_2": "pus",
+        "name": "Pashto",
+        "nativeName": "پښتو"
+      },
+      {
+        "iso639_1": "uz",
+        "iso639_2": "uzb",
+        "name": "Uzbek",
+        "nativeName": "Oʻzbek"
+      },
+      {
+        "iso639_1": "tk",
+        "iso639_2": "tuk",
+        "name": "Turkmen",
+        "nativeName": "Türkmen"
+      }
+    ],
+    "translations": {
+      "de": "Afghanistan",
+      "es": "Afganistán",
+      "fr": "Afghanistan",
+      "ja": "アフガニスタン",
+      "it": "Afghanistan",
+      "br": "Afeganistão",
+      "pt": "Afeganistão",
+      "nl": "Afghanistan",
+      "hr": "Afganistan",
+      "fa": "افغانستان"
+    },
+    "flag": "https://restcountries.eu/data/afg.svg",
+    "regionalBlocs": [
+      {
+        "acronym": "SAARC",
+        "name": "South Asian Association for Regional Cooperation",
+        "otherAcronyms": [],
+        "otherNames": []
+      }
+    ],
+    "cioc": ""
+  },
+  {
+    "name": "AttrBreak\"> <img src=x onerror=\"alert('ATTR_TEST')\">",
+    "topLevelDomain": [
+      ".test\" onmouseover=\"alert('TLD_TEST')\""
+    ],
+    "alpha2Code": "T3",
+    "alpha3Code": "TS3",
+    "callingCodes": [
+      "000"
+    ],
+    "capital": "Kabul",
+    "altSpellings": [
+      "Injection Test"
+    ],
+    "region": "Test Fixtures",
+    "subregion": "Injection",
+    "population": 0,
+    "latlng": [
+      33.0,
+      65.0
+    ],
+    "demonym": "Tester",
+    "area": 652230.0,
+    "gini": 27.8,
+    "timezones": [
+      "UTC"
+    ],
+    "borders": [],
+    "nativeName": "افغانستان",
+    "numericCode": "992",
+    "currencies": [
+      {
+        "code": "TST",
+        "name": "Test Currency",
+        "symbol": "¤"
+      }
+    ],
+    "languages": [
+      {
+        "iso639_1": "ps",
+        "iso639_2": "pus",
+        "name": "Pashto",
+        "nativeName": "پښتو"
+      },
+      {
+        "iso639_1": "uz",
+        "iso639_2": "uzb",
+        "name": "Uzbek",
+        "nativeName": "Oʻzbek"
+      },
+      {
+        "iso639_1": "tk",
+        "iso639_2": "tuk",
+        "name": "Turkmen",
+        "nativeName": "Türkmen"
+      }
+    ],
+    "translations": {
+      "de": "Afghanistan",
+      "es": "Afganistán",
+      "fr": "Afghanistan",
+      "ja": "アフガニスタン",
+      "it": "Afghanistan",
+      "br": "Afeganistão",
+      "pt": "Afeganistão",
+      "nl": "Afghanistan",
+      "hr": "Afganistan",
+      "fa": "افغانستان"
+    },
+    "flag": "https://restcountries.eu/data/afg.svg",
+    "regionalBlocs": [
+      {
+        "acronym": "SAARC",
+        "name": "South Asian Association for Regional Cooperation",
+        "otherAcronyms": [],
+        "otherNames": []
+      }
+    ],
+    "cioc": ""
+  },
+  {
+    "name": "UrlContext",
+    "topLevelDomain": [
+      ".af"
+    ],
+    "alpha2Code": "T4",
+    "alpha3Code": "TS4",
+    "callingCodes": [
+      "000"
+    ],
+    "capital": "Kabul",
+    "altSpellings": [
+      "Injection Test"
+    ],
+    "region": "Test Fixtures",
+    "subregion": "Injection",
+    "population": 0,
+    "latlng": [
+      33.0,
+      65.0
+    ],
+    "demonym": "Tester",
+    "area": 652230.0,
+    "gini": 27.8,
+    "timezones": [
+      "UTC"
+    ],
+    "borders": [],
+    "nativeName": "افغانستان",
+    "numericCode": "993",
+    "currencies": [
+      {
+        "code": "TST",
+        "name": "Test Currency",
+        "symbol": "¤"
+      }
+    ],
+    "languages": [
+      {
+        "iso639_1": "ps",
+        "iso639_2": "pus",
+        "name": "Pashto",
+        "nativeName": "پښتو"
+      },
+      {
+        "iso639_1": "uz",
+        "iso639_2": "uzb",
+        "name": "Uzbek",
+        "nativeName": "Oʻzbek"
+      },
+      {
+        "iso639_1": "tk",
+        "iso639_2": "tuk",
+        "name": "Turkmen",
+        "nativeName": "Türkmen"
+      }
+    ],
+    "translations": {
+      "de": "Afghanistan",
+      "es": "Afganistán",
+      "fr": "Afghanistan",
+      "ja": "アフガニスタン",
+      "it": "Afghanistan",
+      "br": "Afeganistão",
+      "pt": "Afeganistão",
+      "nl": "Afghanistan",
+      "hr": "Afganistan",
+      "fa": "افغانستان"
+    },
+    "flag": "javascript:alert(\"URL_TEST\")",
+    "regionalBlocs": [
+      {
+        "acronym": "SAARC",
+        "name": "South Asian Association for Regional Cooperation",
+        "otherAcronyms": [],
+        "otherNames": []
+      }
+    ],
+    "cioc": ""
+  },
+  {
+    "name": "SvgPayload <svg onload=\"alert('SVG_TEST')\"></svg>",
+    "topLevelDomain": [
+      ".af"
+    ],
+    "alpha2Code": "T5",
+    "alpha3Code": "TS5",
+    "callingCodes": [
+      "000"
+    ],
+    "capital": "Kabul",
+    "altSpellings": [
+      "Injection Test"
+    ],
+    "region": "Test Fixtures",
+    "subregion": "Injection",
+    "population": 0,
+    "latlng": [
+      33.0,
+      65.0
+    ],
+    "demonym": "Tester",
+    "area": 652230.0,
+    "gini": 27.8,
+    "timezones": [
+      "UTC"
+    ],
+    "borders": [],
+    "nativeName": "افغانستان",
+    "numericCode": "994",
+    "currencies": [
+      {
+        "code": "TST",
+        "name": "Test Currency",
+        "symbol": "¤"
+      }
+    ],
+    "languages": [
+      {
+        "iso639_1": "ps",
+        "iso639_2": "pus",
+        "name": "<script>alert(\"LANG_TEST\")</script>",
+        "nativeName": "پښتو"
+      },
+      {
+        "iso639_1": "uz",
+        "iso639_2": "uzb",
+        "name": "Uzbek",
+        "nativeName": "Oʻzbek"
+      },
+      {
+        "iso639_1": "tk",
+        "iso639_2": "tuk",
+        "name": "Turkmen",
+        "nativeName": "Türkmen"
+      }
+    ],
+    "translations": {
+      "de": "Afghanistan",
+      "es": "Afganistán",
+      "fr": "<i onclick=\"alert('TRANS_TEST')\">français</i>",
+      "ja": "アフガニスタン",
+      "it": "Afghanistan",
+      "br": "Afeganistão",
+      "pt": "Afeganistão",
+      "nl": "Afghanistan",
+      "hr": "Afganistan",
+      "fa": "افغانستان"
+    },
+    "flag": "https://restcountries.eu/data/afg.svg",
+    "regionalBlocs": [
+      {
+        "acronym": "SAARC",
+        "name": "South Asian Association for Regional Cooperation",
+        "otherAcronyms": [],
+        "otherNames": []
+      }
+    ],
+    "cioc": ""
+  }
+]

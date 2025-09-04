@@ -4,6 +4,40 @@ $(document).ready(function(){
     });
 });
 
+function sanitiseJSON(obj) {
+    if (obj === null || obj === undefined) {
+        return obj;
+    }
+
+    if (typeof obj === "string") {
+        return obj
+            .replace(/&/g, "&amp;")   // Escape &
+            .replace(/</g, "&lt;")    // Escape <
+            .replace(/>/g, "&gt;")    // Escape >
+            .replace(/"/g, "&quot;")  // Escape "
+            .replace(/'/g, "&#39;")   // Escape '
+            .replace(/\//g, "&#x2F;") // Escape /
+            .replace(/:/g, "&#58;")   // Escape :
+            .replace(/\\/g, "");      // Remove \
+    }
+
+    if (Array.isArray(obj)) {
+        return obj.map(sanitiseJSON);
+    }
+
+    if (typeof obj === "object") {
+        const sanitized = {};
+        for (const key in obj) {
+            if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                sanitized[key] = sanitiseJSON(obj[key]);
+            }
+        }
+        return sanitized;
+    }
+
+    return obj;
+}
+
 function summarizeByRegion(data) {
   const result = data.reduce((acc, country) => {
     const region = country.region || "Unknown";
@@ -222,7 +256,10 @@ function displayTable(data, option) {
 function displayDataCharts(category, option) {
     $("#bubble_chart").html("");
     $("#data_table").html("");
-    d3.json("/data/countries.json").then(function(data) {
+    d3.json("/data/countries_new.json").then(function(data) {
+        data = sanitiseJSON(data)
+
+        console.log(data)
         if (category == "region") {
             data = summarizeByRegion(data);
         }
