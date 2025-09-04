@@ -17,6 +17,7 @@ function sanitiseJSON(obj) {
             .replace(/"/g, "&quot;")  // Escape "
             .replace(/'/g, "&#39;")   // Escape '
             .replace(/\//g, "&#x2F;") // Escape /
+            .replace(/:/g, "&#58;")   // Escape :
             .replace(/\\/g, "");      // Remove \
     }
 
